@@ -1,488 +1,418 @@
-﻿// 1. Syntax of printing Hello World in C#
-    // Method 1: Traditional Console.WriteLine
+/*
+ * ==================================================
+ *   C# Comprehensive Learning Notes
+ *   Organized for: WestCoastGod
+ *   Date: 2025-07-02
+ * ==================================================
+ * 
+ * Instructions:
+ * This file is a self-contained C# program.
+ * Each major topic is in its own method (e.g., DemonstrateVariables(), DemonstrateLoops()).
+ * To test a specific topic, go to the `Main` method at the top and uncomment the line for the topic you wish to run.
+ * 
+ */
+
+// The 'using' directive imports namespaces, giving us access to pre-written code.
+// 'System' is the most fundamental namespace, containing core types and utilities like Console.
 using System;
 
-namespace Print
+// A namespace is a container to organize your code and prevent naming conflicts.
+namespace CSharpLearningJourney
 {
-    class Program
+    /// <summary>
+    /// This is the main class that holds our learning notes and the program's entry point.
+    /// </summary>
+    class ComprehensiveNotes
     {
+        /// <summary>
+        /// The Main method is the starting point of every C# application.
+        /// When you run the program, the code inside Main executes first.
+        /// </summary>
         static void Main(string[] args)
         {
-            // Method 1: Using Console.WriteLine
-            Console.WriteLine("Hello World!");
+            // --- Table of Contents ---
+            // Uncomment the method call for the section you want to explore.
+
+            // Part 1: The Basics
+            // DemonstrateHelloWorld();
+            // DemonstrateVariablesAndDataTypes();
+            // DemonstrateTypeCastingAndConversion();
+            // DemonstrateOperators();
+
+            // Part 2: Program Flow and Logic
+            // DemonstrateControlFlow();
+            // DemonstrateLoops();
+
+            // Part 3: Data Structures
+            // DemonstrateArrays();
+            // DemonstrateEnums();
+
+            // Part 4: Building Blocks of Code
+            // DemonstrateMethods();
+
+            // Part 5: Object-Oriented Programming (OOP) - The Core of C#
+            DemonstrateOOP();
         }
-    }
-}
 
-    // Method 2: Using string interpolation
-// System.Console.WriteLine("Hello World!");
+        #region Part 1: The Basics
 
-// 2. Variable and Data Types: int, double, char, string, bool
-int number = 42; // Integer variable
-double pi = 3.14; // Double variable
-char letter = 'A'; // Character variable
-string message = "Hello, C#"; // String variable
-bool isTrue = true; // Boolean variable
-
-// 3. Constant: If you don't want to change the value of a variable, you can use a constant.
-const int myNum = 15;
-myNum = 20; // error
-
-// 4. Display variables and constants
-string name = "John";
-Console.WriteLine("Hello " + name); // Output: Hello John
-
-int x = 5;
-int y = 6;
-Console.WriteLine(x + y); // Print the value of x + y, i.e., 11
-
-// 5. In C#, there are two types of casting:
-    // Implicit Casting(automatically) -converting a smaller type to a larger type size
-    // char -> int -> long -> float -> double
-
-    // Explicit Casting (manually) - converting a larger type to a smaller size type
-    // double -> float -> long -> int -> char
-
-    // Implicit Casting Example
-int myInt = 9;
-double myDouble = myInt;       // Automatic casting: int to double
-
-Console.WriteLine(myInt);      // Outputs 9
-Console.WriteLine(myDouble);   // Outputs 9
-
-    // Explicit Casting Example
-double myDouble = 9.78;
-int myInt = ***(int)*** myDouble;    // Manual casting: double to int
-
-Console.WriteLine(myDouble);   // Outputs 9.78
-Console.WriteLine(myInt);      // Outputs 9
-
-// 6. Reading user input
-Console.WriteLine("Enter your age:");
-int age = Convert.ToInt32(Console.ReadLine()); // Input: 100
-Console.WriteLine("Your age is: " + age); // Output: Your age is: 100
-
-// 7. Arithmetic Operators: +, -, *, /, %, ++, --
-Console.WriteLine("Arithmetic Operators:");
-Console.WriteLine("Addition: " + (5 + 3)); // Output: 8
-Console.WriteLine("Subtraction: " + (5 - 3)); // Output: 2
-Console.WriteLine("Multiplication: " + (5 * 3)); // Output: 15
-Console.WriteLine("Division: " + (5 / 3)); // Output: 1 (integer division)
-Console.WriteLine("Modulus: " + (5 % 3)); // Output: 2 (remainder)
-Console.WriteLine("Increment: " + (2++)); // Ouputt: 3 (post-increment)
-Console.WriteLine("Decrement: " + (2--)); // Output: 1 (post-decrement)
-
-// 8. Assignment Operators: =, +=, -=, *=, /=, %=, &=, |=, ^=, <<=, >>=
-Console.WriteLine("Assignment Operators:");
-Console.WriteLine("x = 5: " + (x = 5)); // Output: 5
-Console.WriteLine("x += 3: " + (x += 3)); // Output: 8
-Console.WriteLine("x -= 2: " + (x -= 2)); // Output: 6
-Console.WriteLine("x *= 2: " + (x *= 2)); // Output: 12
-Console.WriteLine("x /= 3: " + (x /= 3)); // Output: 4
-Console.WriteLine("x %= 2: " + (x %= 2)); // Output: 0
-Console.WriteLine("x &= 1: " + (x &= 1)); // Output: 0  This is a bitwise AND operation, 0 & 1 = 0
-Console.WriteLine("x |= 1: " + (x |= 1)); // Output: 1  This is a bitwise OR operation, 0 | 1 = 1
-Console.WriteLine("x ^= 1: " + (x ^= 1)); // Output: 0  This is a bitwise XOR operation, 1 ^ 1 = 0
-Console.WriteLine("x <<= 1: " + (x <<= 1)); // Output: 0  This is a left shift operation, 0 << 1 = 0
-Console.WriteLine("x >>= 1: " + (x >>= 1)); // Output: 0  This is a right shift operation, 0 >> 1 = 0
-
-// 9. Comparison Operators: ==, !=, >, <, >=, <=
-Console.WriteLine("Comparison Operators:");
-Console.WriteLine("5 == 5: " + (5 == 5)); // Output: True
-Console.WriteLine("5 != 3: " + (5 != 3)); // Output: True
-Console.WriteLine("5 > 3: " + (5 > 3)); // Output: True
-Console.WriteLine("5 < 3: " + (5 < 3)); // Output: False
-Console.WriteLine("5 >= 5: " + (5 >= 5)); // Output: True
-Console.WriteLine("5 <= 3: " + (5 <= 3)); // Output: False
-
-// 10. Logical Operators: &&, ||, !
-int x = 3;
-Console.WriteLine("Logical Operators:");
-Console.WriteLine("true && false: " + (x < 5 && x < 10)); // Output: True
-Console.WriteLine("true || false: " + (x < 5 || x < 4)); // Output: True
-Console.WriteLine("!true: " + （!(x < 5 && x < 10))); // Output: False
-
-// 11. If-Else Statements
-using System;
-
-namespace Test
-{
-    class TestProgram
-    {
-        static void Main(string[] args)
+        public static void DemonstrateHelloWorld()
         {
-            int age = 17;
-            int legalAge = 18;
+            Console.WriteLine("\n--- 1. Hello World: Your First C# Code ---");
 
-            if (age < legalAge)
+            // The classic, standard way. All code resides within a class and Main method.
+            Console.WriteLine("Hello World! (Traditional)");
+
+            // In modern C# (.NET 6+), you can use "Top-level statements".
+            // A file with just `Console.WriteLine("Hello World!");` is a valid program.
+            // The compiler generates the class and Main method for you behind the scenes.
+        }
+
+        public static void DemonstrateVariablesAndDataTypes()
+        {
+            Console.WriteLine("\n--- 2. Variables and Common Data Types ---");
+
+            // Variables are named containers for storing data.
+            string message = "This is some text";   // For text (strings of characters)
+            int wholeNumber = 100;                  // For whole numbers (integers)
+            double decimalNumber = 99.9;            // For floating-point (decimal) numbers
+            char singleLetter = 'A';                // For a single character
+            bool isCSharpFun = true;                // For true/false values
+
+            Console.WriteLine($"string: {message}");
+            Console.WriteLine($"int: {wholeNumber}");
+            Console.WriteLine($"double: {decimalNumber}");
+            Console.WriteLine($"char: {singleLetter}");
+            Console.WriteLine($"bool: {isCSharpFun}");
+
+            // The 'const' keyword creates a variable whose value cannot be changed.
+            const double PI = 3.14159;
+            Console.WriteLine($"constant: PI is always {PI}");
+            // PI = 3.0; // This line would cause a compile-time error.
+        }
+
+        public static void DemonstrateTypeCastingAndConversion()
+        {
+            Console.WriteLine("\n--- 3. Type Casting and User Input ---");
+
+            // Implicit Casting (safe, automatic) from a smaller to a larger type.
+            int myInt = 10;
+            double myDouble = myInt; // No data is lost.
+            Console.WriteLine($"Implicit cast from int(10) to double: {myDouble}");
+
+            // Explicit Casting (manual, may lose data) from a larger to a smaller type.
+            double anotherDouble = 9.78;
+            int anotherInt = (int)anotherDouble; // The .78 part is truncated (lost).
+            Console.WriteLine($"Explicit cast from double(9.78) to int: {anotherInt}");
+
+            // Reading user input and converting it.
+            Console.WriteLine("\nEnter your age:");
+            string input = Console.ReadLine(); // Console.ReadLine() always returns a string.
+            // We must convert the string to a number to use it in calculations.
+            int age = Convert.ToInt32(input);
+            Console.WriteLine($"You will be {age + 1} on your next birthday.");
+        }
+
+        public static void DemonstrateOperators()
+        {
+            Console.WriteLine("\n--- 4. Operators ---");
+            int x = 10;
+            int y = 3;
+
+            // Arithmetic: +, -, *, /, % (remainder)
+            Console.WriteLine($"Arithmetic: {x} + {y} = {x + y}");
+            Console.WriteLine($"            {x} / {y} = {x / y} (integer division truncates)");
+
+            // Assignment: =, +=, -=, *=, /=
+            x += 5; // Equivalent to x = x + 5;
+            Console.WriteLine($"Assignment: x starts at 10, x += 5 results in {x}");
+
+            // Comparison: ==, !=, >, <, >=, <= (results in a boolean)
+            bool areEqual = (x == y);
+            Console.WriteLine($"Comparison: Is {x} == {y}? {areEqual}");
+
+            // Logical: && (AND), || (OR), ! (NOT)
+            bool logicalResult = (x > 0 && y < 5);
+            Console.WriteLine($"Logical: Is ({x} > 0 AND {y} < 5)? {logicalResult}");
+        }
+
+        #endregion
+
+        #region Part 2: Program Flow and Logic
+
+        public static void DemonstrateControlFlow()
+        {
+            Console.WriteLine("\n--- 5. Control Flow: If-Else and Switch ---");
+
+            int time = 20;
+            if (time < 12)
             {
-                Console.WriteLine("Younger than 18 years old.");
+                Console.WriteLine("Good morning.");
             }
-            else if (age = legalAge)
+            else if (time < 18)
             {
-                Console.WriteLine("Same age as 18 years old.");
+                Console.WriteLine("Good afternoon.");
             }
             else
             {
-                Console.WriteLine("Older than 18 years old.");
+                Console.WriteLine("Good evening.");
+            }
+
+            // Ternary Operator (a shorthand for if-else)
+            string result = (time < 18) ? "It's still daytime." : "It's evening.";
+            Console.WriteLine($"Ternary Operator: {result}");
+
+            // Switch statement is a clean alternative to many if-else if checks.
+            int day = 4;
+            switch (day)
+            {
+                case 6:
+                    Console.WriteLine("Today is Saturday.");
+                    break;
+                case 7:
+                    Console.WriteLine("Today is Sunday.");
+                    break;
+                default:
+                    Console.WriteLine("Looking forward to the Weekend.");
+                    break;
             }
         }
-    }
-}
 
-    // Shortened version of the above code
-int age = 17;
-string message = age < 18 ? "Younger than 18 years old." : age == 18 ? "Same age as 18 years old." : "Older than 18 years old.";
+        public static void DemonstrateLoops()
+        {
+            Console.WriteLine("\n--- 6. Loops: For, While, Foreach ---");
 
-// 12. Switch Statements, While Loops, For Loops, Do-While Loops, Foreach Loops
-int day = 3;
-string dayName;
-    // Switch statement
-switch (day)
-{
-    case 1:
-        dayName = "Monday";
-        break;
-    case 2:
-        dayName = "Tuesday";
-        break;
-    case 3:
-        dayName = "Wednesday";
-        break;
-    default:
-        dayName = "Unknown";
-        break;
-}
-Console.WriteLine("Today is: " + dayName);
+            // For loop: Executes a block of code a specified number of times.
+            for (int i = 0; i < 3; i++)
+            {
+                if (i == 1) continue; // 'continue' skips the rest of this iteration and goes to the next.
+                Console.WriteLine($"For loop iteration: {i}");
+            }
 
-    // While loop
-int i = 0;
-while (i < 5)
-{
-    Console.WriteLine("While Loop: " + i);
-    i++;
-}
+            // While loop: Executes as long as a condition is true.
+            int j = 0;
+            while (j < 3)
+            {
+                if (j == 2) break; // 'break' exits the loop entirely.
+                Console.WriteLine($"While loop iteration: {j}");
+                j++;
+            }
 
-    // For loop
-for (int j = 0; j < 5; j++)
-{
-    Console.WriteLine("For Loop: " + j);
-}
+            // Foreach loop: The simplest way to iterate over all elements in a collection.
+            string[] fruits = { "Apple", "Banana", "Cherry" };
+            foreach (string fruit in fruits)
+            {
+                Console.WriteLine($"I like to eat {fruit}.");
+            }
+        }
 
-    // Do-While loop: The loop will execute at least once, even if the condition is false, because the condition is checked after the loop body.
-int k = 0;
-do
-{
-    Console.WriteLine("Do-While Loop: " + k);
-    k++;
-} while (k < 5);
+        #endregion
 
-    // Foreach loop
-string[] fruits = { "Apple", "Banana", "Cherry" };
-foreach (string fruit in fruits)
-{
-    Console.WriteLine("Foreach Loop: " + fruit); // Output: Apple, Banana, Cherry
-}
+        #region Part 3: Data Structures
 
-// 13. Continue and Break Statements
-    // Continue statement: Skips the current iteration and continues with the next iteration
-for (int i = 0; i < 5; i++)
-{
-    if (i == 2)
-    {
-        continue; // Skip the iteration when i is 2
-    }
-    Console.WriteLine("Continue Example: " + i); // Output: 0, 1, 3, 4
-}
-    // Break statement: Exits the loop entirely
-for (int j = 0; j < 5; j++)
-{
-    if (j == 3)
-    {
-        break; // Exit the loop when j is 3
-    }
-    Console.WriteLine("Break Example: " + j); // Output: 0, 1, 2
+        public static void DemonstrateArrays()
+        {
+            Console.WriteLine("\n--- 7. Arrays: Storing Collections ---");
+            // An array holds a fixed-size list of elements of the same type.
 
-// 14. Arrays
-string[] cars = {"Volvo", "BMW", "Ford", "Mazda"};
-Console.WriteLine(cars[0]); // Outputs Volvo
+            // One-dimensional array
+            string[] cars = { "Volvo", "BMW", "Ford", "Mazda" };
+            Console.WriteLine($"The first car is: {cars[0]}"); // Access by index (starts at 0)
 
-int[,] numbers = { { 1, 4, 2 }, { 3, 6, 8 } };
-Console.WriteLine(numbers[0, 2]);  // Outputs 2
+            // Sorting an array
+            Array.Sort(cars);
+            Console.WriteLine($"Sorted cars: {string.Join(", ", cars)}");
 
-// 15. Sorting Arrays
-    // Sort an int
-int[] myNumbers = {5, 1, 8, 9};
-Array.Sort(myNumbers);
-foreach (int i in myNumbers)
-    {
-        Console.WriteLine(i);
-    }
+            // Two-dimensional array (a grid)
+            int[,] numbers = { { 1, 4, 2 }, { 3, 6, 8 } };
+            Console.WriteLine($"Element at row 1, column 2 is: {numbers[1, 2]}");
+        }
 
-// 16. Methods
-    // Method 1
-static void MyMethod()
-    {
-        Console.WriteLine("I just got executed!");
-    }
+        public static void DemonstrateEnums()
+        {
+            Console.WriteLine("\n--- 8. Enums: Named Integer Constants ---");
 
-static void Main(string[] args)
-    {
-        MyMethod(); // Outputs "I just got executed!"
-    }
+            // An enum is a special type that represents a group of named constants.
+            Level myLevel = Level.Medium;
+            Console.WriteLine($"Current difficulty level is: {myLevel}");
+        }
 
-    // Method 2
-static void MyMethod(string fname, int age)
-{
-    Console.WriteLine(fname + " is " + age);
-}
+        // Enum definition
+        enum Level { Low, Medium, High }
 
-static void Main(string[] args)
-{
-    MyMethod("Liam", 5);
-    MyMethod("Jenny", 8);
-    MyMethod("Anja", 31);
-}
+        #endregion
 
-// Liam is 5
-// Jenny is 8
-// Anja is 31
+        #region Part 4: Building Blocks
 
-// 17. Method Overloading
-static int PlusMethod(int x, int y)
-{
-    return x + y;
-}
+        public static void DemonstrateMethods()
+        {
+            Console.WriteLine("\n--- 9. Methods: Reusable Code Blocks ---");
 
-static double PlusMethod(double x, double y)
-{
-    return x + y;
-}
+            // Method with no parameters
+            GreetUser();
 
-static void Main(string[] args)
-{
-      int myNum1 = PlusMethod(8, 5);
-      double myNum2 = PlusMethod(4.3, 6.26);
-      Console.WriteLine("Int: " + myNum1);
-      Console.WriteLine("Double: " + myNum2);
-}
+            // Method with parameters and a return value
+            int sum = Add(5, 7);
+            Console.WriteLine($"Result from Add method: {sum}");
 
-// 18. Objects and Classes
-class Car
-{
-    string color = "red";
+            // Method Overloading: Same method name, different parameters.
+            double doubleSum = Add(4.3, 6.26);
+            Console.WriteLine($"Result from overloaded Add method: {doubleSum}");
+        }
 
-    static void Main(string[] args)
-    {
-        Car myObj = new Car();
-        Console.WriteLine(myObj.color);
-    }
-}
+        // A simple method that takes no arguments and returns nothing (void).
+        static void GreetUser()
+        {
+            Console.WriteLine("Hello from inside a method!");
+        }
 
-// 19. Object method
-class Car
-{
-    string color;                 // field
-    int maxSpeed;                 // field
-    public void fullThrottle()    // method
-    {
-        Console.WriteLine("The car is going as fast as it can!");
+        // A method that takes two integers and returns an integer.
+        static int Add(int x, int y)
+        {
+            return x + y;
+        }
+
+        // Overloaded method: Same name, but takes doubles instead of ints.
+        static double Add(double x, double y)
+        {
+            return x + y;
+        }
+
+        #endregion
+
+        #region Part 5: Object-Oriented Programming (OOP)
+
+        public static void DemonstrateOOP()
+        {
+            Console.WriteLine("\n--- 10. Object-Oriented Programming (OOP) ---");
+
+            // 1. Classes and Objects
+            // A class is a blueprint. An object is an instance created from that blueprint.
+            // We create a 'Car' object using its constructor.
+            Console.WriteLine("\nCreating a Car object...");
+            Car myCar = new Car("Ford", "Mustang", "Red");
+
+            // 2. Properties and Access Modifiers
+            // We can access its public properties.
+            Console.WriteLine($"My car is a {myCar.Color} {myCar.Brand} {myCar.Model}.");
+
+            // 3. Methods
+            // We can call its methods.
+            myCar.StartEngine();
+
+            // 4. Inheritance
+            // The Car object can call methods from its base class, 'Vehicle'.
+            myCar.Honk();
+
+            // 5. Polymorphism
+            // We can treat a derived object (Car) as its base type (Vehicle).
+            Console.WriteLine("\nDemonstrating Polymorphism...");
+            Vehicle anotherVehicle = myCar;
+            // The same method call has a different behavior depending on the object's actual type.
+            anotherVehicle.DisplaySound(); // This will call the Car's overridden version.
+
+            Vehicle genericVehicle = new Vehicle("Generic Brand");
+            genericVehicle.DisplaySound(); // This will call the Vehicle's base version.
+
+            // 6. Abstract Classes and Interfaces
+            Console.WriteLine("\nDemonstrating Abstraction and Interfaces...");
+            Pig myPig = new Pig();
+            myPig.MakeSound(); // From abstract class
+            myPig.Sleep();     // From abstract class
+            myPig.Eat();       // From interface
+        }
+        #endregion
     }
 
-    static void Main(string[] args)
+    // --- OOP Class Definitions ---
+
+    // Base class (Parent)
+    public class Vehicle
     {
-        Car myObj = new Car();
-        myObj.fullThrottle();  // Can only be called after creating an object of the class
+        // Public property with a getter. The setter is 'protected', meaning only this class
+        // or its children (like Car) can change it.
+        public string Brand { get; protected set; }
+
+        // Constructor for the Vehicle class
+        public Vehicle(string brand)
+        {
+            this.Brand = brand;
+            Console.WriteLine("A Vehicle was constructed.");
+        }
+
+        public void Honk()
+        {
+            Console.WriteLine("Beep, beep!");
+        }
+
+        // A 'virtual' method can be overridden by derived classes.
+        public virtual void DisplaySound()
+        {
+            Console.WriteLine("Vehicle makes a generic sound.");
+        }
     }
-}
 
-// 20. Constructors
-class Car
-{
-    public string model;
-
-    // Create a class constructor with a parameter
-    public Car(string modelName)
+    // Derived class (Child) - inherits from Vehicle
+    public class Car : Vehicle
     {
-        model = modelName;
+        public string Model { get; set; }
+        public string Color { get; set; }
+
+        // Constructor for the Car class.
+        // ': base(brand)' calls the constructor of the parent (Vehicle) class.
+        public Car(string brand, string model, string color) : base(brand)
+        {
+            this.Model = model;
+            this.Color = color;
+            Console.WriteLine("A Car was constructed.");
+        }
+
+        // A method unique to the Car class
+        public void StartEngine()
+        {
+            Console.WriteLine($"The {Model}'s engine is running.");
+        }
+
+        // 'override' provides a new implementation for a 'virtual' method from the base class.
+        public override void DisplaySound()
+        {
+            Console.WriteLine("Car engine goes vroom vroom!");
+        }
     }
 
-    static void Main(string[] args)
+    // An interface defines a "contract" of what a class can do. It only contains method signatures.
+    public interface IFeedable
     {
-        Car Ford = new Car("Mustang");
-        Console.WriteLine(Ford.model); // Outputs "Mustang"
+        void Eat(); // No method body
     }
-}
 
-// 21. Access Modifiers
-/*
-public	    The code is accessible for all classes
-private	    The code is only accessible within the same class
-protected	The code is accessible within the same class, or in a class that is inherited from that class. You will learn more about inheritance in a later chapter
-internal	The code is only accessible within its own assembly, but not from another assembly. You will learn more about this in a later chapter
- */
-
-// 22. Properties
-class Person
-{
-    private string name; // field
-    public string Name   // property
+    // An abstract class cannot be instantiated. It's a blueprint for other classes.
+    // It can contain both regular methods and abstract methods.
+    public abstract class Animal
     {
-        get { return name; }
-        set { name = value; }
+        // An abstract method must be implemented by any non-abstract derived class.
+        public abstract void MakeSound();
+
+        // A regular method that gets inherited.
+        public void Sleep()
+        {
+            Console.WriteLine("Zzz...");
+        }
     }
-}
 
-class Program
-{
-    static void Main(string[] args)
+    // This class inherits from the abstract Animal class AND implements the IFeedable interface.
+    public class Pig : Animal, IFeedable
     {
-        Person myObj = new Person();
-        myObj.Name = "Liam";
-        Console.WriteLine(myObj.Name);
-    }
-}
+        // We MUST provide an implementation for the abstract method.
+        public override void MakeSound()
+        {
+            Console.WriteLine("The pig says: oink oink");
+        }
 
-// 23. Inheritance
-class Vehicle  // base class (parent), if you don't want other classes to inherit from a class, use the sealed keyword (sealed class Vehicle)
-{
-    public string brand = "Ford";  // Vehicle field
-    public void honk()             // Vehicle method 
-    {
-        Console.WriteLine("Tuut, tuut!");
-    }
-}
-
-class Car : Vehicle  // derived class (child)
-{
-    public string modelName = "Mustang";  // Car field
-}
-
-class Program
-{
-    static void Main(string[] args)
-    {
-        // Create a myCar object
-        Car myCar = new Car();
-
-        // Call the honk() method (From the Vehicle class) on the myCar object
-        myCar.honk();
-
-        // Display the value of the brand field (from the Vehicle class) and the value of the modelName from the Car class
-        Console.WriteLine(myCar.brand + " " + myCar.modelName);
-    }
-}
-
-// 24. Polymorphism
-class Animal  // Base class (parent) 
-{
-    public virtual void animalSound()
-    {
-        Console.WriteLine("The animal makes a sound");
-    }
-}
-
-class Pig : Animal  // Derived class (child) 
-{
-    public override void animalSound()
-    {
-        Console.WriteLine("The pig says: wee wee");
-    }
-}
-
-class Dog : Animal  // Derived class (child) 
-{
-    public override void animalSound()
-    {
-        Console.WriteLine("The dog says: bow wow");
-    }
-}
-
-class Program
-{
-    static void Main(string[] args)
-    {
-        Animal myAnimal = new Animal();  // Create a Animal object
-        Animal myPig = new Pig();  // Create a Pig object
-        Animal myDog = new Dog();  // Create a Dog object
-
-        myAnimal.animalSound(); // The animal makes a sound
-        myPig.animalSound(); // The pig says: wee wee
-        myDog.animalSound(); // The dog says: bow wow
-    }
-}
-
-// 25. Abstract Classes and Methods
-// Abstract class
-abstract class Animal
-{
-    // Abstract method (does not have a body)
-    public abstract void animalSound();
-    // Regular method
-    public void sleep()
-    {
-        Console.WriteLine("Zzz");
-    }
-}
-
-// Derived class (inherit from Animal)
-class Pig : Animal
-{
-    public override void animalSound()
-    {
-        // The body of animalSound() is provided here
-        Console.WriteLine("The pig says: wee wee");
-    }
-}
-
-class Program
-{
-    static void Main(string[] args)
-    {
-        Pig myPig = new Pig(); // Create a Pig object
-        myPig.animalSound();  // Call the abstract method
-        myPig.sleep();  // Call the regular method
-    }
-}
-
-// 26. Interfaces
-// Interface
-interface IAnimal
-{
-    void animalSound(); // interface method (does not have a body)
-}
-
-// Pig "implements" the IAnimal interface
-class Pig : IAnimal
-{
-    public void animalSound()
-    {
-        // The body of animalSound() is provided here
-        Console.WriteLine("The pig says: wee wee");
-    }
-}
-
-class Program
-{
-    static void Main(string[] args)
-    {
-        Pig myPig = new Pig();  // Create a Pig object
-        myPig.animalSound();
-    }
-}
-
-// 27. Enums
-enum Level
-{
-    Low,
-    Medium,
-    High
-}
-class Program
-{
-    static void Main(string[] args)
-    {
-        Level myVar = Level.Medium;
-        Console.WriteLine(myVar); // Output: Medium
+        // We MUST provide an implementation for the interface method.
+        public void Eat()
+        {
+            Console.WriteLine("The pig is eating.");
+        }
     }
 }
